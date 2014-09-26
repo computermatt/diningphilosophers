@@ -4,8 +4,8 @@ public interface IFork {
 		 *           */
 	    public void acquire() ;
 
-		    /*
-			 *      * A philosopher releases the fork.
-			 *           */
-		    public void release() ;
+	    /*
+		 *      * A philosopher releases the fork.
+		 *           */
+	    public void release() ;
 }
