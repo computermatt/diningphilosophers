@@ -33,7 +33,7 @@ public class Philosopher extends Thread {
 		Random gen = new Random();
 		for(int i = 1; i != nTimes; ++i) { // if nTimes is 0 (or less) this will run forever. (by design)
 			// think
-			int t = gen.nextInt((int)thinknMillis);
+			int t = thinknMillis == 0 ? 0 : gen.nextInt((int)thinknMillis);
 			System.out.println(String.format(THINK, id, t));
 			try {
 				sleep(t);
@@ -47,7 +47,7 @@ public class Philosopher extends Thread {
 			if(!rHanded) getRight();
 			
 			// eat
-			t = gen.nextInt((int)eatMillis);
+			t = eatMillis == 0 ? 0 : gen.nextInt((int)eatMillis);
 			System.out.println(String.format(EAT, id, t));
 			try {
 				sleep(t);
