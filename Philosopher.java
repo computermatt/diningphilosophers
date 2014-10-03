@@ -16,24 +16,24 @@ public class Philosopher extends Thread {
 	private Fork right;
 	private boolean rHanded;
 	private int nTimes; // 0 means run forever
-	private long thinknMillis; // maximum think time per cycle
+	private long thinkMillis; // maximum think time per cycle
 	private long eatMillis; // maximum eat time per cycle
 
-	public Philosopher(int id, Fork left, Fork right, boolean rHanded, int nTimes, long thiknMillis, long eatMillis) {
+	public Philosopher(int id, Fork left, Fork right, boolean rHanded, int nTimes, long thinkMillis, long eatMillis) {
 		this.id = id;
 		this.left = left;
 		this.right = right;
 		this.rHanded = rHanded;
 		this.nTimes = nTimes;
-		this.thinknMillis = thinknMillis;
+		this.thinkMillis = thinkMillis;
 		this.eatMillis = eatMillis;
 	}
 
 	public void run() {
 		Random gen = new Random();
-		for(int i = 1; i != nTimes; ++i) { // if nTimes is 0 (or less) this will run forever. (by design)
+		for(int i = 0; i != nTimes; ++i) { // if nTimes is negative this will run forever. (by design)
 			// think
-			int t = thinknMillis == 0 ? 0 : gen.nextInt((int)thinknMillis);
+			int t = thinkMillis == 0 ? 0 : gen.nextInt((int)thinkMillis);
 			System.out.println(String.format(THINK, id, t));
 			try {
 				sleep(t);
